@@ -13,41 +13,41 @@ public class BrowserStackDashboardPage
 {
 	//Object Repository
 	WebDriver driver;
-	By UserProfileBtn=By.xpath("//button[@id='account-menu-toggle']");
-	By Summary=By.xpath("//a[text()='Summary']");
-	By UserFullName=By.xpath("(//span[@class='profile-details-card__list-item-value-text'])[1]");
+//	By UserProfileBtn=By.xpath("//button[@id='account-menu-toggle']");
+//	By Summary=By.xpath("//a[text()='Summary']");
+//	By UserFullName=By.xpath("(//span[@class='profile-details-card__list-item-value-text'])[1]");
 	
 //	Page Factory
-//	@FindBy(xpath = "//button[@id='account-menu-toggle']") 
-//	WebElement USerProfileBtn;
-//	@FindBy(xpath = "//a[text()='Summary']") 
-//	WebElement Summary;
-//	@FindBy(xpath= "(//span[@class='profile-details-card__list-item-value-text'])[1]")
-//	WebElement UserFullName;
+	@FindBy(xpath = "//button[@id='account-menu-toggle']") 
+	WebElement USerProfileBtn;
+	@FindBy(xpath = "//a[text()='Summary']") 
+	WebElement Summary;
+	@FindBy(xpath= "(//span[@class='profile-details-card__list-item-value-text'])[1]")
+	WebElement UserFullName;
 	//Counstructor
 	public BrowserStackDashboardPage(WebDriver driver) 
 	{
 		this.driver=driver;
-		//PageFactory.initElements(driver,this);
+		PageFactory.initElements(driver,this);
 	}
 	//Methods
 	public void UserProfileClick()
 	{
-		driver.findElement(UserProfileBtn).click();
-//		Actions act=new Actions(driver);
-//		act.moveToElement(USerProfileBtn).perform();
+		//driver.findElement(UserProfileBtn).click();
+		Actions act=new Actions(driver);
+		act.moveToElement(USerProfileBtn).perform();
 	}
 	public void clickOnSummary()
 	{
-		driver.findElement(Summary).click();
-		//Summary.click();
+		//driver.findElement(Summary).click();
+		Summary.click();
 	}
 	public String VerifyUserName()
 	{
-		String getUserText=driver.findElement(UserFullName).getText();
+		//String getUserText=driver.findElement(UserFullName).getText();
+		//return getUserText;
+		String getUserText=UserFullName.getText();
 		return getUserText;
-//		String getUserText=UserFullName.getText();
-//		return getUserText;
 		
 	}
 }
